@@ -15,7 +15,7 @@ class Weather extends Component {
       error: false,
       message: ""
     };
-    this.apiKey = "5f885c5c46a644fe7d7db51b48846721";
+    this.apiKey = "5f885c5c46a644fe7d7db51b48846721"; // Your Openweathermap API key here , get your key from here http://home.openweathermap.org/users/sign_up
     this.searchLocation = this.searchLocation.bind(this);
     this.getWeatherInfo = this.getWeatherInfo.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -64,7 +64,7 @@ class Weather extends Component {
     let weatherInfo = this.state.data;
     let partialTemplate = "";
     if (this.state.error == true) {
-        partialTemplate = (
+      partialTemplate = (
         <ErrorMessage type="error" message={this.state.message} />
       );
     } else if (
@@ -78,12 +78,12 @@ class Weather extends Component {
             Temperature : {weatherInfo.name}{" "}
             <span>{(weatherInfo.main.temp / 10).toFixed(2)} C</span>
           </p>
-          {weatherInfo.weather.map((weatherData) =>
+          {weatherInfo.weather.map(weatherData => (
             <p>
-                {weatherData.main} 
-                <span> : {weatherData.description}</span>
+              {weatherData.main}
+              <span> : {weatherData.description}</span>
             </p>
-            )}
+          ))}
         </div>
       );
     }
